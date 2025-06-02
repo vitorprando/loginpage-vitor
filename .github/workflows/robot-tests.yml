@@ -37,13 +37,15 @@ jobs:
       - name: Executar testes com Xvfb (modo headless)
         run: |
           Xvfb :99 & export DISPLAY=:99
-          robot tests
+          python3 -m http.server 8000 &
+          sleep 2
+          robot --variable LOGIN_PAGE:http://localhost:8000/index.html tests
 
       - name: Salvar relatório
-  uses: actions/upload-artifact@v4
-  with:
-    name: robot-report
-    path: |
-      log.html
-      report.html
-      output.xml
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-report
+          path: |
+            log.html
+            report.html
+            output.xml
