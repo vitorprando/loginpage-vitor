@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}          chrome
-${LOGIN_PAGE}       file://${CURDIR}/../index.html
+${LOGIN_PAGE}       http://localhost:8000/index.html
 ${VALID_USER}       admin
 ${VALID_PASSWORD}   123456
 ${INVALID_USER}     errado
